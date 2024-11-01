@@ -21,7 +21,7 @@ def scrape_website(website):
         print('Connected! Navigating...')
         driver.get(website)
         print('Taking page screenshot to file page.png')
-        driver.get_screenshot_as_file('./page.png')
+        driver.get_screenshot_as_file('./resources/page.png')
         print('Navigated! Scraping page content...')
         html = driver.page_source
         return html
