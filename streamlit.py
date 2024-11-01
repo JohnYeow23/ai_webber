@@ -4,7 +4,6 @@
 '''
 import os
 import streamlit as st
-from dotenv import load_dotenv
 
 from bs4 import BeautifulSoup
 import html.parser
