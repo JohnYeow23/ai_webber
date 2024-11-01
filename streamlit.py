@@ -15,8 +15,6 @@ from selenium.webdriver.common.by import By
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
 
-load_dotenv()
-
 # claude = ChatAnthropic(
 #     model="claude-3-5-sonnet-20240620",
 #     api_key=os.getenv("CLAUDE_API_KEY")
