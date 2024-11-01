@@ -15,13 +15,6 @@ from selenium.webdriver.common.by import By
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
 
-# claude = ChatAnthropic(
-#     model="claude-3-5-sonnet-20240620",
-#     api_key=os.getenv("CLAUDE_API_KEY")
-# )
-
-# SBR_WEBDRIVER = os.environ.get('BRIGHT_DATA')
-
 claude = ChatAnthropic(
     model="claude-3-5-sonnet-20240620",
     api_key=st.secrets["CLAUDE_API_KEY"]
@@ -101,32 +94,32 @@ def parse_with_claude(dom_chunks, parse_description):
     return "\n".join(str(msg) for msg in parsed_results)
 
 # Creating the streamlit UI
-def main():
-    st.title("AI Web Scraper")
-    url = st.text_input("Enter a Website URL:")
+# def main():
+st.title("AI Web Scraper")
+url = st.text_input("Enter a Website URL:")
 
-    if st.button("Scrape Site"):
-        st.write("Scraping the website")
-        
-        result = scrape_website(url)
-        body_content = extract_body_content(result)
-        cleaned_content = clean_body_content(body_content)
-        
-        st.session_state.dom_content = cleaned_content
-        
-        with st.expander("View DOM Content"):
-            st.text_area("DOM Content", cleaned_content, height=300)
+if st.button("Scrape Site"):
+    st.write("Scraping the website")
+    
+    result = scrape_website(url)
+    body_content = extract_body_content(result)
+    cleaned_content = clean_body_content(body_content)
+    
+    st.session_state.dom_content = cleaned_content
+    
+    with st.expander("View DOM Content"):
+        st.text_area("DOM Content", cleaned_content, height=300)
 
-    if "dom_content" in st.session_state:
-        parse_description = st.text_area("Describe what you want to parse?")
-        
-        if st.button("Parse Content"):
-            if parse_description:
-                st.write("Parsing the content")
-                
-                dom_chunks = split_dom_content(st.session_state.dom_content)
-                result = parse_with_claude(dom_chunks, parse_description)
-                st.write(result)
+if "dom_content" in st.session_state:
+    parse_description = st.text_area("Describe what you want to parse?")
+    
+    if st.button("Parse Content"):
+        if parse_description:
+            st.write("Parsing the content")
+            
+            dom_chunks = split_dom_content(st.session_state.dom_content)
+            result = parse_with_claude(dom_chunks, parse_description)
+            st.write(result)
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+    # main()
