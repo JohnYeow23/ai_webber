@@ -23,6 +23,10 @@ Welcome to **AI Web Scraper**, an advanced, AI-powered web scraping application 
 2. **Scrape the DOM**: The app retrieves the DOM content using Selenium and BeautifulSoup.
 3. **Prompt the AI**: Enter your query, and the AI (powered by LangChain) will search the scraped content for relevant information and present an answer based on your prompt.
 
+**Example Showcase:**
+
+![AI Web Scraper](https://i.imgur.com/DeK84RE.png)
+
 ## ⚙️ Technologies Used
 
 - **Selenium**: For navigating and interacting with websites.
