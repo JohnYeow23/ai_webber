@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 beautifulsoup4 = "*"
+streamlit = "*"
+selenium = "*"
+langchain-anthropic = "*"
+langchain-core = "*"
 
 [dev-packages]
 ipykernel = "*"
