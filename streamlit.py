@@ -68,10 +68,10 @@ def clean_body_content(body_content):
     
     return cleaned_content
 
-'''
-    We need to split the text due to context windows that LLM have
-    Maybe can explore the possibility of using langchain splitting functions to do the following chunk splitting
-'''
+# '''
+#     We need to split the text due to context windows that LLM have
+#     Maybe can explore the possibility of using langchain splitting functions to do the following chunk splitting
+# '''
 
 def split_dom_content(dom_content, context_length= 200, max_length=6000):
     return [
