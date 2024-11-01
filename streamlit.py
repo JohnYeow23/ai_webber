@@ -18,15 +18,19 @@ from langchain_core.prompts import ChatPromptTemplate
 
 load_dotenv()
 
+# claude = ChatAnthropic(
+#     model="claude-3-5-sonnet-20240620",
+#     api_key=os.getenv("CLAUDE_API_KEY")
+# )
+
+# SBR_WEBDRIVER = os.environ.get('BRIGHT_DATA')
+
 claude = ChatAnthropic(
     model="claude-3-5-sonnet-20240620",
-    api_key=os.getenv("CLAUDE_API_KEY")
+    api_key=st.secrets["CLAUDE_API_KEY"]
 )
 
-trace = os.getenv("LANGCHAIN_TRACING_V2")
-langsmith = os.getenv("LANGCHAIN_API_KEY")
-
-SBR_WEBDRIVER = os.environ.get('BRIGHT_DATA')
+SBR_WEBDRIVER = st.secrets["BRIGHT_DATA"]
 
 template = (
     "You are tasked with extracting specific information from the following text content: {dom_content}. "
