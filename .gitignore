@@ -2,4 +2,5 @@ resources
 .env
 __pycache__
 .streamlit
+.DS_Store
 /
