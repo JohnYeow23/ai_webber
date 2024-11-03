@@ -96,6 +96,7 @@ def parse_with_claude(dom_chunks, parse_description):
 # Creating the streamlit UI
 # def main():
 st.title("AI Web Scraper")
+st.image("https://i.imgur.com/YWb0oSJ.jpeg", use_column_width=True) #, caption="Welcome to My App!"
 url = st.text_input("Enter a Website URL:")
 
 if st.button("Scrape Site"):
