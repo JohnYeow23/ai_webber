@@ -26,8 +26,8 @@ template = (
     "You are tasked with extracting specific information from the following text content: {dom_content}. "
     "Please follow these instructions carefully: \n\n"
     "1. **Extract Information:** Only extract the information that directly matches the provided description: {parse_description}. "
-    "2. **No Extra Content:** Do not include any additional text, comments, or explanations in your response. "
-    "3. **Empty Response:** If no information matches the description, return the following string ('Nothing found')."
+    "2. **No Extra Content:** Do not include any additional text, comments, or explanations in your response. Unless prompted by the user. "
+    "3. **Empty Response:** If no information matches the description, return the following string ('No information can be found based on your prompt')."
     "4. **Direct Data Only:** Your output should contain only the data that is explicitly requested, with no other text."
 )
 
@@ -94,9 +94,16 @@ def parse_with_claude(dom_chunks, parse_description):
     return "\n".join(str(msg) for msg in parsed_results)
 
 # Creating the streamlit UI
-# def main():
 st.title("AI Web Scraper")
-st.image("https://i.imgur.com/YWb0oSJ.jpeg", use_column_width=True) #, caption="Welcome to My App!"
+
+st.image(
+    "https://i.imgur.com/YWb0oSJ.jpeg", 
+    use_column_width=True, 
+    caption= "Welcome to my App!\n\n"
+             "This app was inspired by the challenges I faced when trying to get clear, up-to-date explanations from large language models (LLMs) on niche or evolving concepts that are only covered in recent blog posts or articles. \n\n"
+             "With this web scraper, you can access the latest information and insights from across the web—even on sites with CAPTCHA protection. \n\n"
+             "The tool empowers you to explore and deepen your understanding of specialized topics by pulling in the freshest content available online."
+)
 url = st.text_input("Enter a Website URL:")
 
 if st.button("Scrape Site"):
@@ -122,5 +129,7 @@ if "dom_content" in st.session_state:
             result = parse_with_claude(dom_chunks, parse_description)
             st.write(result)
 
-# if __name__ == "__main__":
-    # main()
+# Okie in the future we will add in the other options like 
+# 1) Giving them the option to go to the notebooklm website to paste in the information and create a podcast to deep dive the topic.
+# 2) Or the option to reprompt again based on the following.
+# 3) Option to save the information into a certain format for usecase.
